@@ -1,0 +1,16 @@
+.text-principal {
+    color: #357fe8 !important;
+}
+.text-version {
+    color: #357fe8 !important;
+    font-style: italic;
+}
+.text-derechos {
+    color: #8f9193 !important;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 1.2vh;
+}

@@ -1,0 +1,16 @@
+<!-- Sidebar -->
+<div class="bg-dark" id="sidebar-wrapper">
+    <div class="sidebar-heading"><img src="assets/img/logo_sistema.png" alt="Aduana Nacional" id="aduana_logo"></div>
+    <div class="list-group list-group-flush">
+        <div class="head-option">MENÚ PRINCIPAL</div>
+        <a routerLinkActive="active" routerLink="/inicio" class="list-group-item list-group-item-action bg-dark" aria-expanded="false"><i class="fas fa-home"></i> Inicio</a>
+        <div *ngFor="let opc of opciones">
+            <a *ngIf = "(opc.anterior == 0 || opc.anterior == null)" routerLinkActive="active" class="list-group-item list-group-item-action bg-dark dropdown-toggle" data-toggle="collapse" attr.data-target="#submenu{{opc.opcion}}" aria-expanded="false"><i class="fab {{menu}}"></i> {{opc.descripcion}} <span class="caret"></span></a>
+            <ul class="nav collapse" id="submenu{{opc.opcion}}" role="menu" aria-labelledby="btn-1">
+                <ng-container *ngFor = "let sub of opciones">
+                        <a *ngIf = "(sub.anterior == opc.opcion)" routerLink="opcion/{{sub.accion}}" routerLinkActive="active" class="list-group-item list-group-item-action bg-dark sub-element"><i class="fas fa-link"></i> {{sub.descripcion}}</a>    
+                </ng-container>
+            </ul>
+        </div> 
+    </div>
+  </div>

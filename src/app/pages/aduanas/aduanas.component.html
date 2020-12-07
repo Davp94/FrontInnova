@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">Listado </div>
+        <div class="card-body">
+          <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let aduana of aduanas; let indice = index">
+                  <td>{{indice + 1 }}</td>
+                  <td>{{aduana.codAduana}}</td>
+                  <td>{{aduana.descripcion}}</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>            
+    </div>
+</div>
+
+

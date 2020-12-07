@@ -1,0 +1,24 @@
+.card{
+    height: 520px !important;
+}
+
+table {
+    width: 100%; /* 140px * 5 column + 16px scrollbar width */
+    border-spacing: 0;
+}
+
+tbody, thead tr { display: block; }
+
+tbody {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody td, thead th {
+    width: 350px;
+}
+
+/*thead th:last-child {
+    width: 156px; /* 140px + 16px scrollbar width 
+}*/

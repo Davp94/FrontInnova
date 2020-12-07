@@ -1,0 +1,29 @@
+<div class="card border-primary mb-3">
+  <div class="card-header">Pedidos</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de Pedidos</h5>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>fechaHora</th>
+          <th>Cantidad</th>
+          <th>Cliente</th>
+          <th>Direccion</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedidoDTO of pedidosDTO">
+          <td>{{ pedidoDTO.fechaHora}}</td>
+          <td>{{ pedidoDTO.detalle.cantidad }}</td>
+          <td>{{ pedidoDTO.cliente.nombres }}</td>
+          <td>{{ pedidoDTO.direccion }}</td>
+          <td>{{ pedidoDTO.estado }}</td>
+        
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

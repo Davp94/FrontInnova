@@ -1,0 +1,15 @@
+#aduana_logo {
+    width: 236px;
+}
+.head-option {
+    padding: 0.5rem;
+    margin-top: 2rem;
+    color: #ffffff;
+}
+.list-group-item {
+    padding-left: 1rem;
+}
+.sub-element {
+    padding-left: 2rem;
+    font-size: 0.8rem;
+}

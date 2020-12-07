@@ -1,0 +1,55 @@
+<!--div class="main">
+    <div class="container">
+        <div class="middle">
+            <div id="login">
+                <img src="assets/img/aduana_transparente.png" alt="Aduana Nacional" id="aduana_logo">
+                <form #frmLogin="ngForm" (ngSubmit)="onLogin(frmLogin)">
+                    <fieldset class="clearfix">
+                        <p ><span class="fa fa-user"></span><input type="text" name="usuario" Placeholder="Usuario" ngModel required oninput="this.value = this.value.toUpperCase()"></p> 
+                        <p><span class="fa fa-lock"></span><input type="password" name="clave" Placeholder="Contraseña" ngModel required></p>
+                        <div>
+                            <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="Entrar"></span>
+                        </div>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+            <div class="logo">LOGO
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div-->
+<div class="main">
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="text-center">
+                <div>
+                    <!--img src="assets/img/logo_sistema.png" /-->
+                </div>
+                <div class="card">
+                    <h4 class="card-header">DEBE INICIAR SESIÓN</h4>
+                    <form #frmLogin="ngForm" (ngSubmit)="onLogin(frmLogin)">
+                            <div class="inner-addon left-addon">
+                                <span class="fa fa-user"></span>
+                                <input type="text" class="form-control" name="usuario" placeholder="Usuario" ngModel required oninput="this.value = this.value.toUpperCase()">
+                            </div>
+                            <div class="inner-addon left-addon">
+                                <span class="fa fa-lock"></span>
+                                <input type="password" class="form-control" name="clave" placeholder="Contraseña" ngModel required>
+                            </div>
+                            <div class="button-div">
+                                <input type="submit" id="submit" class="btn btn-primary" value="Ingresar">
+                            </div>
+                    </form>        
+                </div>
+
+                <div class="text-center">
+                    <!--img src="assets/img/anb_login.png" /-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

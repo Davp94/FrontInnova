@@ -1,0 +1,50 @@
+div.main{
+    background: #012348; /* Old browsers 0e3763*/
+    background: -moz-radial-gradient(center, ellipse cover,  #0e3763 1%, #012348 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,#0e3763), color-stop(100%,#012348)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #0e3763 1%,#012348 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #0e3763 1%,#012348 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #0e3763 1%,#012348 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #0e3763 1%,#012348 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e3763', endColorstr='#012348',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    height:calc(100vh);
+    width:100%;
+}
+
+/* enable absolute positioning */
+.inner-addon { 
+  position: relative; 
+  padding: 5px 10px 0 10px;
+}
+
+/* style icon */
+.inner-addon .fa {
+position: absolute;
+padding: 10px;
+pointer-events: none;
+}
+
+/* align icon */
+.left-addon .fa  { left:  10px;}
+.right-addon .fa { right: 10px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+
+
+
+.card {
+  width: 400px !important;
+}
+.button-div {
+  padding: 10px;
+}
+
+#submit {
+  width: 100%;
+}
+
+
+

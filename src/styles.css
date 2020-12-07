@@ -1,0 +1,33 @@
+.bg-dark {
+    background: #012348 !important;
+    color: rgba(255,255,255,0.5) !important;
+}
+.bg-dark:hover {
+    color: #ffffff !important;
+}
+.dropdown-item :hover {
+    color: #ffffff !important;
+    background: none !important;
+}
+.active {
+    background: #0e3763 !important;
+}
+body {
+    background: #eeeeee;
+}
+.form-group.required .col-form-label:before {
+    content:"* ";
+    color:red;
+}
+.container-fluid {
+    padding: 0 !important;
+}
+.logo{
+    color:#fff;
+    font-size:50px;
+    line-height: 100px;
+    padding: 20px;
+}
+.alert-dismissable {
+    margin: 0;
+}
