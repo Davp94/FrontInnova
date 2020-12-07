@@ -4,6 +4,8 @@
     <div class="list-group list-group-flush">
         <div class="head-option">MENÚ PRINCIPAL</div>
         <a routerLinkActive="active" routerLink="/inicio" class="list-group-item list-group-item-action bg-dark" aria-expanded="false"><i class="fas fa-home"></i> Inicio</a>
+        <a routerLinkActive="active" routerLink="/opcion/registrar" class="list-group-item list-group-item-action bg-dark" aria-expanded="false"><i class="fas fa-home"></i> Registrar Pedido</a>
+        <a routerLinkActive="active" routerLink="opcion/listaPedidos" class="list-group-item list-group-item-action bg-dark" aria-expanded="false"><i class="fas fa-home"></i> Listar Pedidos</a>
         <div *ngFor="let opc of opciones">
             <a *ngIf = "(opc.anterior == 0 || opc.anterior == null)" routerLinkActive="active" class="list-group-item list-group-item-action bg-dark dropdown-toggle" data-toggle="collapse" attr.data-target="#submenu{{opc.opcion}}" aria-expanded="false"><i class="fab {{menu}}"></i> {{opc.descripcion}} <span class="caret"></span></a>
             <ul class="nav collapse" id="submenu{{opc.opcion}}" role="menu" aria-labelledby="btn-1">

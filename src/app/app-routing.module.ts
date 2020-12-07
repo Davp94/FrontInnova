@@ -35,7 +35,7 @@ const routes: Routes = [
   }
   ,
   {
-    path: '**', pathMatch: 'full', redirectTo: 'opcion/listaPedidos'
+    path: '**', pathMatch: 'full', redirectTo: 'inicio'
   }
 ];
 

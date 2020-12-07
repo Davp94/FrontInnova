@@ -21,10 +21,10 @@ export class RegistrarPedidoComponent implements OnInit {
   zonas: Zona[] = [];
   productos: Producto[] = [];
   registroForm: FormGroup;
-  cliente: Cliente = { idCliente: 1, ci: '', nombres: '', apellidos: '', telefono: '',  nit: '', latitud: 0, longitud: 0};
+  cliente: Cliente = {  ci: '', nombres: '', apellidos: '', telefono: '',  nit: '', latitud: 0, longitud: 0};
   detalle: Detalle = { cantidad: 0, idProducto: 1, precioProducto: 0};
   pedido: Pedido = { direccion: '', idRepartidor: 1, idZona: 1, fechaHora: '',
-                     cliente: { idCliente: 1, ci: '', nombres: '', apellidos: '', telefono: '',  nit: '', latitud: 0, longitud: 0},
+                     cliente: {  ci: '', nombres: '', apellidos: '', telefono: '',  nit: '', latitud: 0, longitud: 0},
                      detalle: { cantidad: 0, idProducto: 1, precioProducto: 0} };
   constructor(private zonaService: ZonaService,
               private productoService: ProductoService,
@@ -78,16 +78,19 @@ export class RegistrarPedidoComponent implements OnInit {
     //this.cliente = this.registroForm.value;
     //this.detalle = this.registroForm.value;
     this.pedido.direccion = this.registroForm.value.direccion;
-    this.pedido.idZona = Number(this.registroForm.value.idZona);
     this.pedido.idRepartidor = 1;
+    this.pedido.idZona = Number(this.registroForm.value.idZona);
     this.pedido.fechaHora = '2020-11-21T21:10:54.722Z';
-    this.cliente.idCliente = 1;
     this.cliente.ci = this.registroForm.value.ci;
     this.cliente.nombres = this.registroForm.value.nombres;
     this.cliente.apellidos = this.registroForm.value.apellidos;
     this.cliente.telefono = this.registroForm.value.telefono;
+    this.cliente.nit=this.registroForm.value.ci;
+    this.cliente.latitud=1;
+    this.cliente.longitud=1;
     this.detalle.cantidad = Number(this.registroForm.value.cantidad);
     this.detalle.idProducto = Number(this.registroForm.value.idProducto);
+    this.detalle.precioProducto = 15;
     this.pedido.cliente = this.cliente;
     this.pedido.detalle = this.detalle;
     console.log(this.pedido);
@@ -95,14 +98,16 @@ export class RegistrarPedidoComponent implements OnInit {
       .subscribe( (resp: PedidoResponse) => {
         if (resp)
         {
-          swal.fire({
-            icon: 'info',
-            title:'Confirmacion de registro',
-            text: 'Su pedido ha sido correctamente registrado \n'
-                  +this.cliente.nombres + ' \n' + this.pedido.direccion
-                  + ' \n' + this.detalle.cantidad
-          })
+      
           if (resp.respuesta.estado === 200) {
+            swal.fire({
+              icon: 'info',
+              title:'Confirmacion de registro',
+              html: 'Su pedido ha sido correctamente registrado'+
+                    '<br>'+'cliente: ' +this.cliente.nombres + 
+                    '<br>'+'Direccion: ' +this.pedido.direccion+
+                    '<br>'+'Nro Botellones: ' + this.detalle.cantidad
+            })
             alert(resp.respuesta.mensaje);
           } else{
             alert(resp.respuesta.mensaje);

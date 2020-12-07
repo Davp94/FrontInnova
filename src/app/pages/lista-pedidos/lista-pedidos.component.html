@@ -6,7 +6,8 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>fechaHora</th>
+          <th>fecha</th>
+          <th>Hora</th>
           <th>Cantidad</th>
           <th>Cliente</th>
           <th>Direccion</th>
@@ -15,9 +16,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let pedidoDTO of pedidosDTO">
-          <td>{{ pedidoDTO.fechaHora}}</td>
+          <td>{{ pedidoDTO.fechaHora.substring(0,10)}}</td>
+          <td>{{ pedidoDTO.fechaHora.substring(11,16)}}</td>
           <td>{{ pedidoDTO.detalle.cantidad }}</td>
-          <td>{{ pedidoDTO.cliente.nombres }}</td>
+          <td>{{ pedidoDTO.cliente.nombres + ' ' +pedidoDTO.cliente.apellidos}}</td>
           <td>{{ pedidoDTO.direccion }}</td>
           <td>{{ pedidoDTO.estado }}</td>
         
