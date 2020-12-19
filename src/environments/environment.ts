@@ -8,7 +8,7 @@ export const environment = {
   plataforma: 'WEB',
   version: 'beta 1',
   wsAuth: 'http://localhost:8080/wsauth',
-  wsBackend: 'http://localhost:8085'
+  wsBackend: 'https://cainco-bootcamp.herokuapp.com/'
 };
 
 /*

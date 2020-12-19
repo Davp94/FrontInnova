@@ -4,5 +4,5 @@ export const environment = {
   plataforma: 'WEB',
   version: '1.0',
   wsAuth: 'http://produccion.aduana.gob.bo/wsauth',
-  wsBackend: 'http://localhost:8081'
+  wsBackend: 'https://cainco-bootcamp.herokuapp.com/'
 };

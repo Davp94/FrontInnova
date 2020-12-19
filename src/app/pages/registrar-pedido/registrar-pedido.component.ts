@@ -12,6 +12,7 @@ import { Detalle } from 'src/app/interfaces/detalle';
 import { RegistrarPedidoService } from 'src/app/services/registrarpedido.services';
 import { PedidoResponse } from 'src/app/interfaces/pedido-response';
 import swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-registrar-pedido',
   templateUrl: './registrar-pedido.component.html',
@@ -29,7 +30,8 @@ export class RegistrarPedidoComponent implements OnInit {
   constructor(private zonaService: ZonaService,
               private productoService: ProductoService,
               private formBuilder: FormBuilder,
-              private registrarPedidoService: RegistrarPedidoService
+              private registrarPedidoService: RegistrarPedidoService,
+              private spinner: NgxSpinnerService
               ) { }
 
   ngOnInit(): void {
@@ -39,14 +41,14 @@ export class RegistrarPedidoComponent implements OnInit {
   }
   createForm(): void {
     this.registroForm = this.formBuilder.group({
-      direccion: ['', Validators.required],
+      direccion: ['', [Validators.required, Validators.pattern(/^([a-zA-Z\s]{10,100})\sNRO.\s([0-9]{1,4})$/)]],
       idZona: ['', Validators.required],
-      nombres:  [, [Validators.required]],
-      apellidos: ['', [Validators.required]],
-      telefono: [, [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
-      ci:  ['', Validators.required],
+      nombres:  [, [Validators.required, Validators.pattern(/^[A-Za-z\s]{1,20}$/)]],
+      apellidos: ['', [Validators.required,Validators.pattern(/^[A-Za-z\s]{1,50}$/)]],
+      telefono: [, [Validators.required, Validators.pattern(/(^[6-7]{1}[0-9]{7}$)|(^[2-4]{1}[0-9]{6}$)/)]],
+      ci:  ['', [Validators.required, Validators.pattern(/^([0-9]{6,9})([a-zA-Z]{1})?$/)]],
       idProducto: ['', Validators.required],
-      cantidad: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]]
+      cantidad: ['', [Validators.required, Validators.pattern(/^[1-5]$/)]]
     });
   }
   listaZonas(): void {
@@ -77,6 +79,7 @@ export class RegistrarPedidoComponent implements OnInit {
     // this.pedido = this.registroForm.value;
     //this.cliente = this.registroForm.value;
     //this.detalle = this.registroForm.value;
+    this.spinner.show();
     this.pedido.direccion = this.registroForm.value.direccion;
     this.pedido.idRepartidor = 1;
     this.pedido.idZona = Number(this.registroForm.value.idZona);
@@ -98,24 +101,26 @@ export class RegistrarPedidoComponent implements OnInit {
       .subscribe( (resp: PedidoResponse) => {
         if (resp)
         {
-      
-          if (resp.respuesta.estado === 200) {
-            swal.fire({
-              icon: 'info',
-              title:'Confirmacion de registro',
-              html: 'Su pedido ha sido correctamente registrado'+
-                    '<br>'+'cliente: ' +this.cliente.nombres + 
-                    '<br>'+'Direccion: ' +this.pedido.direccion+
-                    '<br>'+'Nro Botellones: ' + this.detalle.cantidad
-            })
-            alert(resp.respuesta.mensaje);
-          } else{
-            alert(resp.respuesta.mensaje);
-          }
+          setTimeout(() => {
+            /** spinner ends after 5 seconds */
+            this.spinner.hide();
+            if (resp.respuesta.estado === 200) {
+              swal.fire({
+                icon: 'info',
+                title:'Confirmacion de registro',
+                html: 'Su pedido ha sido correctamente registrado'+
+                      '<br>'+'cliente: ' +this.cliente.nombres + 
+                      '<br>'+'Direccion: ' +this.pedido.direccion+
+                      '<br>'+'Nro Botellones: ' + this.detalle.cantidad
+              }) 
+            } else{
+              
+            }
+        }, 5000);
         }
-        console.log(resp);
       },
       (error) => {
+        this.spinner.hide();
         alert(error);
         swal.fire({
           icon: 'info',
@@ -123,8 +128,6 @@ export class RegistrarPedidoComponent implements OnInit {
           text: error
         })
         console.log(error);
-      });
-      
-  
+      });  
   }
 }

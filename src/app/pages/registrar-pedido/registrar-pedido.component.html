@@ -1,3 +1,4 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Guardando... </p></ngx-spinner>
 <div class="container">
     <br>
     <div class="card">     
@@ -15,7 +16,11 @@
                     <input type="text" class="form-control text-left" maxlength="60" formControlName="nombres" oninput="this.value = this.value.toUpperCase()">
                     <div *ngIf="registroForm.get('nombres').invalid && registroForm.get('nombres').errors">
                         <small class="text-danger" *ngIf="registroForm.get('nombres').hasError('required')">
-                            El campo Nombre es requerido.</small>                                    
+                                El campo Nombre es requerido.
+                            </small>
+                            <small class="text-danger" *ngIf="registroForm.get('nombres').hasError('pattern')">
+                                El campo Nombre no es válido
+                            </small>                                 
                     </div> 
                 </div>
                 <label for="labelInfo" class="col-sm-3 col-xs-12 col-form-label">Apellido:</label>
@@ -23,27 +28,33 @@
                     <input type="text" class="form-control text-left"  maxlength="60" formControlName="apellidos" oninput="this.value = this.value.toUpperCase()">
                     <div *ngIf="registroForm.get('apellidos').invalid && registroForm.get('apellidos').errors">
                         <small class="text-danger" *ngIf="registroForm.get('apellidos').hasError('required')">
-                            El campo Apellido es requerido.</small>                                    
+                                El campo Apellido es requerido.
+                            </small>
+                            <small class="text-danger" *ngIf="registroForm.get('apellidos').hasError('pattern')">
+                                El campo Apellido no válido 
+                            </small>                                
                     </div> 
                 </div>
             </div> 
             <div class="form-group row">
                 <label for="labelInfo" class="col-sm-3 col-xs-12 col-form-label">Nro Documento:</label>
                 <div class="col-sm-3 col-xs-12">
-                    <input type="text" class="form-control text-left"  maxlength="12" formControlName="ci" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" class="form-control text-left"  maxlength="12" formControlName="ci" oninput="this.value = this.value.toUpperCase()" placeholder="Ej. 6958470  o 69584701F">
                     <div *ngIf="registroForm.get('ci').invalid && registroForm.get('ci').errors">
                         <small class="text-danger" *ngIf="registroForm.get('ci').hasError('required')">
-                            El campo Nro Documento es requerido.</small>                                    
+                            El campo Nro Documento es requerido.</small>   
+                             <small class="text-danger" *ngIf="registroForm.get('ci').hasError('pattern')">
+                                El campo Nro Documento no tiene un formato válido</small>                                  
                     </div> 
                 </div>
-                <label for="labelInfo" class="col-sm-3 col-xs-12 col-form-label">Nro Teléfono:</label>
+                <label for="labelInfo" class="col-sm-3 col-xs-12 col-form-label" >Nro Teléfono:</label>
                 <div class="col-sm-3 col-xs-12">
-                    <input type="text" class="form-control text-left"  maxlength="12" formControlName="telefono" >
+                    <input type="text" class="form-control text-left"  maxlength="12" formControlName="telefono" placeholder="Ej. 2473619  o  70696541">
                     <div *ngIf="registroForm.get('telefono').invalid && registroForm.get('telefono').errors">
                         <small class="text-danger" *ngIf="registroForm.get('telefono').hasError('required')">
                             El campo Teléfono es requerido.</small>
                         <small class="text-danger" *ngIf="registroForm.get('telefono').hasError('pattern')">
-                            Solo es permitido números.</small>                  
+                            El campo Teléfono no tiene un formato válido.</small>                  
                     </div>   
                 </div>    
                           
@@ -54,10 +65,12 @@
             <div class="form-group row">
                 <label for="labelInfo" class="col-sm-3 col-xs-12 col-form-label">Dirección:</label>
                 <div class="col-sm-3 col-xs-12">
-                    <input type="text" class="form-control text-left"  maxlength="100" formControlName="direccion" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" class="form-control text-left"  maxlength="100" formControlName="direccion" oninput="this.value = this.value.toUpperCase()"  placeholder="Ej. dirección NRO. 123" >
                     <div *ngIf="registroForm.get('direccion').invalid && registroForm.get('direccion').errors">
                         <small class="text-danger" *ngIf="registroForm.get('direccion').hasError('required')">
-                            El campo Dirección es requerido.</small>                                    
+                            El campo Dirección es requerido.</small>  
+                             <small class="text-danger" *ngIf="registroForm.get('direccion').hasError('pattern')">
+                            Formato incorrecto, ej. nombre de calle NRO. XXX </small>                                      
                     </div> 
                 </div>
                 <label for="labelInfo" class="col-sm-3 col-xs-12 col-form-label">Zona:</label>
@@ -95,7 +108,7 @@
                         <small class="text-danger" *ngIf="registroForm.get('cantidad').hasError('required')">
                             El campo Cantidad es requerido.</small>
                         <small class="text-danger" *ngIf="registroForm.get('cantidad').hasError('pattern')">
-                            Solo es permitido números.</small>                  
+                            Solo es permitido pedidos de 1 a 5.</small>                  
                     </div> 
                 </div>
             </div>

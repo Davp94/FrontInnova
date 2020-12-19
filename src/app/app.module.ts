@@ -20,7 +20,9 @@ import { AduanasComponent } from './pages/aduanas/aduanas.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { RegistrarPedidoComponent } from './pages/registrar-pedido/registrar-pedido.component';
 import { ListaPedidosComponent } from './pages/lista-pedidos/lista-pedidos.component';
-import { ListarPedidoDTOService} from './services/listarPedidoDTO.service'
+import { ListarPedidoDTOService} from './services/listarPedidoDTO.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -48,12 +50,15 @@ export function tokenGetter() {
     ListaPedidosComponent
   ],
   imports: [
+    
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AlertModule,
+    NgxSpinnerModule,
     JwtModule.forRoot(JWT_Module_Options)
   ],
   providers: [
